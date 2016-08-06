@@ -1,6 +1,8 @@
 # ZCAutoScrollView
 简单易用的广告轮播页面，可轮播本地和网络图片（依赖SDWebImage），支持手动和自动滚动，可设置小圆点位置和网络缺省图片。支持图片的点击事件。
 # 效果
+动态图片展示不出来的这里我直接附上图片地址
+`http://7xt7mf.com1.z0.glb.clouddn.com/%E6%8F%90%E7%A4%BA%E6%A1%86.gif`
 ![演示效果](http://7xt7mf.com1.z0.glb.clouddn.com/%E6%8F%90%E7%A4%BA%E6%A1%86.gif)
 # 原理
 采用UIScrollView完成，假如要循环3张图片，则放4张，也就是最后一张图片放2次。顺序为3123，默认scrollView在第一张图片上，当切换到第三张时把scrollView的偏移量移到第一张图片上，这样就完成了循环。
