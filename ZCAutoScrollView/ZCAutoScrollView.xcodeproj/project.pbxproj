@@ -553,7 +553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = /Users/lzc/Desktop/ZCAutoScrollView/ZCAutoScrollViewDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ZCAutoScrollViewDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ljkj.ZCAutoScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -564,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = /Users/lzc/Desktop/ZCAutoScrollView/ZCAutoScrollViewDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ZCAutoScrollViewDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ljkj.ZCAutoScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -636,6 +636,7 @@
 				2043659F1D5471B7002B8546 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		204365A01D5471B7002B8546 /* Build configuration list for PBXNativeTarget "ZCAutoScrollViewTests" */ = {
 			isa = XCConfigurationList;
@@ -644,6 +645,7 @@
 				204365A21D5471B7002B8546 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		204365A31D5471B7002B8546 /* Build configuration list for PBXNativeTarget "ZCAutoScrollViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -652,6 +654,7 @@
 				204365A51D5471B7002B8546 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

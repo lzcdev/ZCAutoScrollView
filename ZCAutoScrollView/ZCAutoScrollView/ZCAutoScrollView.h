@@ -10,6 +10,13 @@
 
 #import <UIKit/UIKit.h>
 
+// 设置小圆点位置
+typedef NS_ENUM(NSInteger, NSPageControlAliment) {
+    NSPageControlAlimentCenter, //小圆点居中
+    NSPageControlAlimentRight, //小圆点居右
+    NSPageControlAlimentNone //小圆点隐藏
+};
+
 typedef void(^ClickImageViewBlock)(NSInteger index);
 
 @interface ZCAutoScrollView : UIView
@@ -17,8 +24,8 @@ typedef void(^ClickImageViewBlock)(NSInteger index);
 @property (nonatomic, assign) CGFloat scrollInterval;     //切换图片的时间间隔,默认3s
 @property (nonatomic, assign) CGFloat animationInterVale; //切换图片过程间隔默认0.7s
 @property (nonatomic, strong) NSArray *imageArray; //图片数组
-
-@property (nonatomic, assign) BOOL *isAutoScroll; //是否自动切换
+@property (nonatomic, strong) UIImage *placeholderImage; //缺省图片
+@property (nonatomic, assign) NSPageControlAliment pageControlAliment; //小圆点对齐方式，默认没有
 
 @property (nonatomic, copy) ClickImageViewBlock block;
 

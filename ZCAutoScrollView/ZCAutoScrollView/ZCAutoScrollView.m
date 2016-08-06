@@ -32,9 +32,13 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-       
+        
         [self setValueWithFrame:frame];
-    }
+        
+        [self initScrollView];
+        [self addPageControl];
+        [self addTimer];
+       }
     return self;
 }
 
@@ -52,13 +56,9 @@
 
 - (void)layoutSubviews
 {
-    [self initScrollView];
-    [self addImageArray];
-    [self addPageControl];
+    [super layoutSubviews];
     
-    if (!_isAutoScroll) {
-        [self addTimer];
-    }
+    [self addImageArray];   
 }
 
 /**
@@ -70,6 +70,7 @@
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;
     _scrollView.delegate = self;
+    _scrollView.backgroundColor = [UIColor greenColor];
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_scrollView];
     
@@ -86,7 +87,8 @@
     for (int i = 0; i < (_imageArray.count + 1); i++) {
         _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(_scrollViewWidth * i, 0, _scrollViewWidth, _scrollViewHeight)];
         _imageView.clipsToBounds = YES;
-        
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView.backgroundColor = [UIColor yellowColor];
         if (i == 0) {
             //
             _imageName = [_imageArray lastObject];
@@ -97,7 +99,7 @@
         // 是网络图片
         if ([self checkURL:_imageName]) {
             NSURL *imageUrl = [NSURL URLWithString:_imageName];
-            [_imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"dog_1"]];
+            [_imageView sd_setImageWithURL:imageUrl placeholderImage:_placeholderImage];
         }else
         {
             // 是本地图片
@@ -137,13 +139,42 @@
  */
 - (void)addPageControl
 {
-    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, _scrollViewHeight-20, _scrollViewWidth, 20)];
+    _pageControl = [[UIPageControl alloc]init];
     _pageControl.currentPage = _currentPage - 1;
-    _pageControl.numberOfPages = _imageArray.count;
     _pageControl.tintColor = [UIColor blackColor];
     [self addSubview:_pageControl];
 }
-
+// 小圆点位置
+- (void)setPageControlAliment:(NSPageControlAliment)pageControlAliment
+{
+    _pageControlAliment = pageControlAliment;
+    _pageControl.hidden = NO;
+    _pageControl.numberOfPages = _imageArray.count;
+    switch (pageControlAliment) {
+        case NSPageControlAlimentCenter:
+        {
+            _pageControl.frame = CGRectMake(0, _scrollViewHeight-20, _scrollViewWidth, 10);
+        }
+            break;
+        case NSPageControlAlimentRight:
+        {
+            NSLog(@"rrrr");
+            CGSize size = CGSizeMake(self.imageArray.count * 10 * 1.2, 10);
+            CGFloat x = _scrollViewWidth - size.width-20;
+            CGFloat y = _scrollViewHeight - 20;
+            _pageControl.frame = CGRectMake(x, y, size.width, size.height);
+        }
+            break;
+        case NSPageControlAlimentNone:
+        {
+            _pageControl.hidden = YES;
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 /**
  *  验证是不是网址
  *
@@ -185,7 +216,7 @@
 - (void)addTimer
 {
     _timer = [NSTimer scheduledTimerWithTimeInterval:_scrollInterval target:self selector:@selector(changeOffset) userInfo:nil repeats:YES];
-
+    
 }
 /**
  *  自动切换
@@ -207,7 +238,7 @@
     }];
     
     _pageControl.currentPage = _currentPage - 1;
-
+    
 }
 /**
  *  暂停定时器
