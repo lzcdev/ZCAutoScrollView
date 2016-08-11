@@ -7,7 +7,15 @@
 # 原理
 采用UIScrollView完成，假如要循环3张图片，则放4张，也就是最后一张图片放2次。顺序为3123，默认scrollView在第一张图片上，当切换到第三张时把scrollView的偏移量移到第一张图片上，这样就完成了循环。
 # 用法
-把ZCAutoScrollView这个文件夹拖入工程，文件夹里面包含SDWebImage和ZCAutoScrollView.h,ZCAutoScrollView.m两个文件，若项目中已有SDWebImage，只需把其余两个文件拖入工程。
+1.支持CocoaPods,
+
+```
+platform :ios, '7.0'
+use_frameworks!
+pod 'ZCAutoScrollView', '~> 0.0.2'
+```
+
+2.把ZCAutoScrollView这个文件夹拖入工程，文件夹里面包含SDWebImage和ZCAutoScrollView.h,ZCAutoScrollView.m两个文件，若项目中已有SDWebImage，只需把其余两个文件拖入工程。
 导入头文件`#import "ZCAutoScrollView.h"`
 
 ```
