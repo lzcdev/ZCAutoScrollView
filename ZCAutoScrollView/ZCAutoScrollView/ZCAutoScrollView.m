@@ -88,7 +88,7 @@
         _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(_scrollViewWidth * i, 0, _scrollViewWidth, _scrollViewHeight)];
         _imageView.clipsToBounds = YES;
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
-        _imageView.backgroundColor = [UIColor yellowColor];
+        _imageView.backgroundColor = [UIColor whiteColor];
         if (i == 0) {
             //
             _imageName = [_imageArray lastObject];
